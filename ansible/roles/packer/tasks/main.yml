@@ -1,0 +1,12 @@
+- name: download packer archive
+  get_url:
+    url: "{{ packer.download_url }}"
+    dest: /tmp/
+  register: download
+
+- name: install packer
+  unarchive:
+    src: "/tmp/packer_{{ packer_version }}_linux_amd64.zip"
+    dest: "{{ packer.install_path }}"
+    mode: 0755
+  when: download|changed

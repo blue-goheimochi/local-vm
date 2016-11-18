@@ -10,3 +10,4 @@ Virtual Machine for local
 
 * Docker
 * Docker Compose
+* Packer
