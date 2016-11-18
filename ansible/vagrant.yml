@@ -1,0 +1,6 @@
+- hosts: vagrant
+  vars_files:
+    - vars/vagrant.yml
+  become: yes
+  roles:
+    - common

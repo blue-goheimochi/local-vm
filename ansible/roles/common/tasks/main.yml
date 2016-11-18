@@ -1,0 +1,30 @@
+- name: apt-get install
+  apt: name={{ item }} state=latest
+  with_items:
+    - language-pack-ja
+    - curl
+    - unzip
+    - wget
+    - rsync
+    - apt-transport-https
+    - ca-certificates
+    - build-essential
+    - vim
+
+- name: get current locale
+  shell: localectl status | grep 'System Locale:' | sed -n -e "s/^\s*System Locale:\s*LANG=\(.*\)/\1/p"
+  register: current_locale
+  changed_when: false
+
+- name: set locale
+  shell: localectl set-locale LANG="{{ common.locale }}"
+  when: current_locale.stdout != "{{ common.locale }}"
+
+- name: get current timezone
+  shell: timedatectl status | grep 'Time zone:' | sed -n -e "s/^\s*Time zone:\s*\(.*\) \\((.*)\\)/\1/p"
+  register: current_timezone
+  changed_when: false
+
+- name: set timezone
+  shell: timedatectl set-timezone "{{ common.timezone }}"
+  when: current_timezone.stdout != "{{ common.timezone }}"
