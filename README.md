@@ -9,3 +9,4 @@ Virtual Machine for local
 ## Included
 
 * Docker
+* Docker Compose
