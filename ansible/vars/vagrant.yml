@@ -10,7 +10,7 @@ docker:
   options:
     - docker_opts: --insecure-registry 192.168.33.14:5000
     
-packer_version: 0.12.0
+packer_version: 1.0.4
 packer:
   download_url: https://releases.hashicorp.com/packer/{{ packer_version }}/packer_{{ packer_version }}_linux_amd64.zip
   install_path: /usr/local/bin
