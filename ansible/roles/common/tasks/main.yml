@@ -18,7 +18,7 @@
 
 - name: set locale
   shell: localectl set-locale LANG="{{ common.locale }}"
-  when: current_locale.stdout != "{{ common.locale }}"
+  when: current_locale.stdout != common.locale
 
 - name: get current timezone
   shell: timedatectl status | grep 'Time zone:' | sed -n -e "s/^\s*Time zone:\s*\(.*\) \\((.*)\\)/\1/p"
@@ -27,4 +27,4 @@
 
 - name: set timezone
   shell: timedatectl set-timezone "{{ common.timezone }}"
-  when: current_timezone.stdout != "{{ common.timezone }}"
+  when: current_timezone.stdout != common.timezone
