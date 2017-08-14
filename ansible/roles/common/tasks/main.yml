@@ -10,6 +10,7 @@
     - ca-certificates
     - build-essential
     - vim
+    - jq
 
 - name: get current locale
   shell: localectl status | grep 'System Locale:' | sed -n -e "s/^\s*System Locale:\s*LANG=\(.*\)/\1/p"
